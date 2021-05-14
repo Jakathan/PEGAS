@@ -1076,3 +1076,9 @@ FUNCTION throttleControl {
 	}
 	ELSE { pushUIMessage( "throttleControl stage error (stage=" + upfgStage + "(" + whichStage + "), mode=" + vehicle[whichStage]["mode"] + ")!", 5, PRIORITY_CRITICAL ). }.
 }
+
+//	Null Steering Transform
+FUNCTION nullTransform {
+    DECLARE PARAMETER inputVector.
+    RETURN inputVector.
+}

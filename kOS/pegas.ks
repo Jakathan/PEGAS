@@ -34,6 +34,7 @@ GLOBAL steeringVector IS LOOKDIRUP(SHIP:FACING:FOREVECTOR, SHIP:FACING:TOPVECTOR
 GLOBAL steeringRoll IS 0.
 GLOBAL upfgConverged IS FALSE.
 GLOBAL stagingInProgress IS FALSE.
+GLOBAL steeringTransform IS nullTransform@.
 
 
 //	PREFLIGHT ACTIVITIES
@@ -67,7 +68,7 @@ setComms(). 			//	Setting up communications
 createUI().
 //	Prepare control for vertical ascent
 LOCK THROTTLE TO throttleSetting.
-LOCK STEERING TO steeringVector.
+LOCK STEERING TO steeringTransform(steeringVector).
 SET ascentFlag TO 0.	//	0 = vertical, 1 = pitching over, 2 = notify about holding prograde, 3 = just hold prograde
 //	Main loop - wait on launch pad, lift-off and passive guidance
 UNTIL ABORT {
